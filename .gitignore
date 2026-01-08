@@ -1,0 +1,39 @@
+# ========================
+# 1. 物理隔離區 (Local Only)
+# ========================
+archive/
+tmp/
+
+# ========================
+# 2. 系統與編輯器垃圾 (OS & IDE Junk)
+# ========================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ========================
+# 3. 網站構建產物 (Hugo Artifacts)
+# ========================
+public/
+resources/_gen/
+hugo_stats.json
+# 如果未來用 npm/yarn
+node_modules/
+
+# ========================
+# 4. 資安與憑證 (Security Net)
+# ========================
+*.kubeconfig
+*.crt
+*.key
+*.csr
+*.pem
+pki/
+# 僅允許 example (白名單機制)
+*_secret.yaml
+!example_secret.yaml
