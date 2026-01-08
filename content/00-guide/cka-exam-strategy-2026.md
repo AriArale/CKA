@@ -1,9 +1,9 @@
-# CKA 備考戰略與必背指令集 (Hardcore Cheat Sheet) - 2026 Final Edition
+# CKA 備考戰略與必背指令集 (Hardcore Cheat Sheet) - 2026
 
-**目標:** 2026/01/30 一次通關 CKA
-**倒數:** 24 天
-**核心哲學:** 80% Imperative (指令生成), 20% Declarative (查表修 YAML)。速度即生存。
-**date:** 2026-01-06
+**目標:** 2026/01/30 一次通關 CKA  
+**倒數:** 24 天  
+**核心哲學:** 80% Imperative (指令生成), 20% Declarative (查表修 YAML)。速度即生存。  
+**date:** 2026-01-07
 
 ---
 
@@ -72,7 +72,7 @@ k run nginx --image=nginx $d  # 應立刻吐出 YAML
 ```bash
     k expose deploy my-dep --port=80 --target-port=8080 --type=NodePort --name=my-svc $d
 ```
-	**重點:** `targetPort` 必須等於 Container 內部的 Port。
+- **重點:** `targetPort` 必須等於 Container 內部的 Port。
  
 - **除錯:** `k get ep <svc-name>` (檢查 Endpoints 是否有 IP)。
 
