@@ -94,6 +94,29 @@
 * **Von Neumann vs Harvard:**
     * 現代電腦**宏觀**上是馮·紐曼架構 (RAM 內 Code/Data 混居)。
     * **微觀**上 (CPU 內部) 是哈佛架構 (L1 Cache 分離 Code/Data) 以提升效能。
-* **Memory Pressure (macOS):**
-    * **Wired Memory:** 系統核心佔用，不可搬移。
-    * **Compressed Memory:** 當 RAM 不足時，CPU 會介入壓縮資料以換取空間 (以時間換空間)。
+
+- 1. 宏觀視角：RAM 是個大倉庫 (Von Neumann)  
+	在您的 16GB 記憶體條 (RAM) 裡，**Data (資料)** 和 **Code (程式碼)** 是住在同一個物理空間的。
+	
+	- **Code (程式碼):** 這是應用程式的「指令本身」（例如 Chrome 瀏覽器的 `.app` 執行檔）。這通常佔比較小，幾百 MB 就算很大了。
+	- **Data (資料):** 這是程式執行時產生的「內容」（例如 Chrome 開了 100 個分頁，每個分頁裡的圖片、文字、影片緩衝）。**這才是吃掉您 RAM 的元兇**。    
+
+- 2. 微觀視角：CPU 內部的分流 (Harvard)
+	那「Code 和 Data 分離」發生在哪？
+	它發生在 資料從 RAM 被搬進 CPU 核心的那一瞬間。
+	
+	    a. **在 RAM 裡：** 大家混在一起（Von Neumann）。  
+	    b. **在傳輸匯流排 (Bus) 上：** 排隊進 CPU。  
+	    c. **進入 CPU L1 Cache：**  
+	    警衛 (CPU Fetch Unit) 看到這是「指令 (`ADD`, `JMP`)」，把它踢進 **L1i (Instruction Cache)**。  
+	    警衛看到這是「數值 (`User ID`, `Image Pixel`)」，把它踢進 **L1d (Data Cache)**。
+
+- 3. 記憶體裡的 Data 結構 (Process Memory Layout)
+	為了更具體理解 Data 怎麼佔用 RAM，一個執行中的程式 (Process) 在 RAM 裡通常切成這四塊：
+
+| **區域**           | **內容 (Code vs Data)** | **佔用 RAM 行為**                                                       |
+| ---------------- | --------------------- | ------------------------------------------------------------------- |
+| **Text Segment** | **Code** (指令)         | **固定大小**。程式啟動後就不太會變大。                                               |
+| **Data Segment** | **Data** (全域變數)       | **固定大小**。存一些設定值。                                                    |
+| **Heap (堆積)**    | **Data** (動態物件)       | **無限膨脹**。您開越多分頁、修越多圖，這塊就會一直往上吃 RAM。**OOM (Out of Memory) 通常發生在這裡**。 |
+| **Stack (堆疊)**   | **Data** (函式呼叫)       | **動態伸縮**。紀錄函式執行順序，佔用較少。                                             |
