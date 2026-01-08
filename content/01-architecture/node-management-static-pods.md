@@ -1,4 +1,4 @@
-# Kubernetes CKA 學習筆記 Pare14 - Node Join, Certs & Static Pods
+# Kubernetes CKA 學習筆記 Part14 - Node Join, Certs & Static Pods
 
 **重點:** Kubeadm Join 流程、憑證更新、Static Pod 運作機制 (Mirror Pod) 與 DaemonSet 架構比較
 **date:** 2025-12-29

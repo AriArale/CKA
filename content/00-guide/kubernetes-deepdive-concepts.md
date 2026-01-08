@@ -1,4 +1,4 @@
-# Kubernetes 硬核觀念補充
+# Kubernetes CKA 學習筆記 Part16 - Kubernetes 硬核觀念補充
 
 **重點:** 網路分層模型、資料序列化原理、ConfigMap/Secret 機制、Workload 調度哲學
 **date:** 2026-01-06

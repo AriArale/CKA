@@ -27,7 +27,7 @@
 1.  **升級工具本身 (kubeadm):**
 ```bash
     apt-get update && apt-get install -y kubeadm=1.34.x-1.1
-    ```
+```
 2.  **制定計畫 (Plan):**
 ```bash
     kubeadm upgrade plan

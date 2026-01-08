@@ -1,4 +1,4 @@
-# CKA 備考戰略與必背指令集 (Hardcore Cheat Sheet) - 2026
+# Kubernetes CKA 學習筆記 Part17 - 2026 CKA 備考戰略與必背指令集 (Hardcore Cheat Sheet)
 
 **目標:** 2026/01/30 一次通關 CKA  
 **倒數:** 24 天  
