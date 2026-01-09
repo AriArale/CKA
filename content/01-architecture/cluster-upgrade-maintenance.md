@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part13 - 叢集升級與維護模式
 
-**重點:** Cluster Upgrade 流程、版本傾斜策略 (Version Skew)、Drain/Uncordon 維護與 Kustomize
+**重點:** Cluster Upgrade 流程、版本傾斜策略 (Version Skew)、Drain/Uncordon 維護與 Kustomize  
 **date:** 2025-12-23
 
 ---
@@ -14,7 +14,7 @@
 ```bash
     apt-cache madison kubeadm   # 查詢倉庫中所有可用版本
     apt-cache show kubeadm | grep Version
-    ```
+```
 * **Kustomize 觀察：** `kubectl version` 顯示的 `Kustomize Version` 代表 `kubectl` 內建了配置管理引擎 (原生支援 `-k` 參數)。
 
 ---
@@ -32,18 +32,18 @@
 ```bash
     kubeadm upgrade plan
     # 檢查是否可以升級，並顯示目標版本
-    ```
+```
 3.  **執行升級 (Apply):**
  ```bash
     # ⚠️ 這是 Control Plane 專用指令
     kubeadm upgrade apply v1.34.x
-    ```
+```
 4.  **升級二進制檔 (Binary) 與重啟:**
 ```bash
     apt-get install -y kubelet=1.34.x-1.1 kubectl=1.34.x-1.1
     systemctl daemon-reload
     systemctl restart kubelet
-    ```
+```
 
 ---
 ## 3. 升級戰略 II：Worker Node (四肢)
@@ -60,7 +60,7 @@
     # ⚠️ 這是 Worker Node 專用指令，注意沒有 "apply" 且不用指定版本
     # 它會自動去讀取 Control Plane 的設定
     kubeadm upgrade node
-    ```
+```
 3.  **升級 Kubelet 並重啟:** 同上。
 
 ---
@@ -83,6 +83,7 @@
 ```bash
 # 1. 查版本真相
 apt-cache madison kubeadm
+apt-cache show kubeadm | grep Version
 
 # 2. Control Plane 升級關鍵指令
 kubeadm upgrade plan
