@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part3 - 網路模型、資源關係與運作原理
   
-**範圍:** Service Port 解析 ~ GitOps 觀念釐清
+**範圍:** Service Port 解析 ~ GitOps 觀念釐清  
 **date:** 2025-12-05
 
 ---

@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part11 - YAML 結構、排程除錯與 DaemonSet 全解析
 
-**重點:** Pod Name 階層差異、Pending 排查 SOP、DaemonSet 四大應用場景與 SRE 關鍵視角
+**重點:** Pod Name 階層差異、Pending 排查 SOP、DaemonSet 四大應用場景與 SRE 關鍵視角   
 **date:** 2025-12-18
 
 ---
@@ -9,12 +9,12 @@
 
 在 Pod YAML 中，有兩個 `name` 欄位，用途完全不同。
 
-| 欄位路徑         | **`metadata.name`**                | **`spec.containers[*].name`**           |
-| :----------- | :--------------------------------- | :-------------------------------------- |
-| **定義對象**     | **Pod 本體 (房子的門牌)**                 | **容器 (住在房間裡的人)**                        |
-| **唯一性範圍**    | Namespace 內唯一                      | Pod 內唯一                                 |
-| **SRE 關鍵用途** | K8s API 操作 (Delete, Get, Describe) | **多容器操作** (Sidecar 模式時必用)               |
-| **指令影響**     | `k logs <pod_name>`                | `k logs <pod_name> -c <container_name>` |
+| 欄位路徑         | **`metadata.name`**                  | **`spec.containers[*].name`**           |
+| :--------------- | :----------------------------------- | :-------------------------------------- |
+| **定義對象**     | **Pod 本體 (房子的門牌)**            | **容器 (住在房間裡的人)**               |
+| **唯一性範圍**   | Namespace 內唯一                     | Pod 內唯一                              |
+| **SRE 關鍵用途** | K8s API 操作 (Delete, Get, Describe) | **多容器操作** (Sidecar 模式時必用)     |
+| **指令影響**     | `k logs <pod_name>`                  | `k logs <pod_name> -c <container_name>` |
 
 **實戰場景：**
 當 Pod 裡有多個容器 (如 App + Log Agent) 時，若要看 Log 或 Exec 進入特定容器，必須使用 `-c <container_name>` 指定，否則預設只會進第一個容器。
@@ -48,12 +48,12 @@
 
 ### A. 四大應用場景與工具 (SRE 必知)
 
-| 場景 | 代表工具 | SRE 解析 |
-| :--- | :--- | :--- |
-| **1. 儲存驅動 (Storage)** | **CSI Plugins**, Rook/Ceph, Longhorn | **用途:** 讓 Node 有能力掛載 PV (如 AWS EBS, NFS)。<br>**故障:** 若掛掉，Pod 會卡在 `ContainerCreating` (VolumeMountFailed)。 |
-| **2. 日誌收集 (Logging)** | **Fluentd**, Promtail, Filebeat | **用途:** 讀取 `/var/log` 並送往 ELK/Loki。<br>**架構:** 相比 Sidecar 模式 (每個 App 掛一個 Agent)，DaemonSet 更節省資源。 |
-| **3. 節點監控 (Monitoring)** | **Node Exporter**, Datadog Agent | **用途:** 讀取 Host 層級指標 (CPU 溫度, Disk IOPS)。<br>**權限:** 常需開啟 `hostNetwork` 或 `hostPID`。 |
-| **4. 網路基礎 (Networking)** | **kube-proxy**, **Calico Node**, Flannel | **用途:** 管理 iptables、路由表、CNI。<br>**重要性:** 沒有它，Pod 之間無法連線。 |
+| 場景                         | 代表工具                                 | SRE 解析                                                                                                                      |
+| :--------------------------- | :--------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
+| **1. 儲存驅動 (Storage)**    | **CSI Plugins**, Rook/Ceph, Longhorn     | **用途:** 讓 Node 有能力掛載 PV (如 AWS EBS, NFS)。<br>**故障:** 若掛掉，Pod 會卡在 `ContainerCreating` (VolumeMountFailed)。 |
+| **2. 日誌收集 (Logging)**    | **Fluentd**, Promtail, Filebeat          | **用途:** 讀取 `/var/log` 並送往 ELK/Loki。<br>**架構:** 相比 Sidecar 模式 (每個 App 掛一個 Agent)，DaemonSet 更節省資源。    |
+| **3. 節點監控 (Monitoring)** | **Node Exporter**, Datadog Agent         | **用途:** 讀取 Host 層級指標 (CPU 溫度, Disk IOPS)。<br>**權限:** 常需開啟 `hostNetwork` 或 `hostPID`。                       |
+| **4. 網路基礎 (Networking)** | **kube-proxy**, **Calico Node**, Flannel | **用途:** 管理 iptables、路由表、CNI。<br>**重要性:** 沒有它，Pod 之間無法連線。                                              |
 
 ### B. DaemonSet 的特權本質
 DaemonSet 通常被視為「系統關鍵元件」，YAML 常見特徵：
@@ -73,9 +73,9 @@ DaemonSet 通常被視為「系統關鍵元件」，YAML 常見特徵：
 
 **步驟：**
 1.  **產生模板：**
-  ```bash
+```bash
     k create deploy my-ds --image=nginx --dry-run=client -o yaml > ds.yaml
-    ```
+```
 2.  **手術修改 (`vim ds.yaml`)：**
     * `kind: Deployment` -> 改為 `DaemonSet`
     * **刪除** `replicas: 1` (最重要)

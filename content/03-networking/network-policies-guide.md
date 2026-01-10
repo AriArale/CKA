@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part6 - NetworkPolicy 實戰與架構解析
 
-**重點:** NetworkPolicy 白名單機制、YAML 結構陷阱、kubectl exec 參數詳解
+**重點:** NetworkPolicy 白名單機制、YAML 結構陷阱、kubectl exec 參數詳解  
 **date:** 2025-12-12
 
 ---

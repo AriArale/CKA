@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part10 - Affinity 驗證與工具的真實性
 
-**重點:** `describe` 的顯示陷阱、YAML Source of Truth、**Affinity 動態驗證法 (移動靶心測試)**
+**重點:** `describe` 的顯示陷阱、YAML Source of Truth、**Affinity 動態驗證法 (移動靶心測試)**  
 **date:** 2025-12-17
 
 ---

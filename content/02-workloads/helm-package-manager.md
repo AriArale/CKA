@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part15 - Helm 實戰、網路架構與資源監控
 
-**重點:** `kubectl top` 監控指令、Metrics Server 架構、Helm 操作與 Pod 網路觀念
+**重點:** `kubectl top` 監控指令、Metrics Server 架構、Helm 操作與 Pod 網路觀念  
 **date:** 2025/12/30
 
 ---
@@ -18,23 +18,23 @@
 ```bash
     k top node
     # 用途: 檢查是否有 Node 過勞，可能導致 Pod 被驅逐。
-    ```
+```
 2.  **查 Pod 總量 (應用層):**
 ```bash
     k top po
     # 顯示 Pod 內「所有 Container 的加總」。
-    ```
+```
 3.  **查 Container 明細 (除錯層 - 殺手鐧):**
 ```bash
     k top po <pod-name> --containers
     # 用途: 當 Pod OOM 時，抓出是主程式還是 Sidecar (Log Agent) 在吃記憶體。
     # 驗證: Pod Total Usage ≈ Sum(Container Usages)。
-    ```
+```
 4.  **快速排序 (篩選):**
 ```bash
     k top po --sort-by=cpu     # 抓 CPU 怪獸
     k top po --sort-by=memory  # 抓 RAM 怪獸
-    ```
+```
 
 ---
 ## 2. Helm: Kubernetes 的包裝管理員

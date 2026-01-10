@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part4 - Service 機制、除錯與 Ingress
 
-**重點:** Service Port 隔離、Endpoints 除錯、Ingress 配置與未來趨勢
+**重點:** Service Port 隔離、Endpoints 除錯、Ingress 配置與未來趨勢  
 **date:** 2025-12-08
 
 ---
@@ -113,6 +113,6 @@ k -n world expose deploy asia --port 80
     - path: /app2
       backend:
         service: ... # ✅ 路徑 2 也用 Service
-    ```
+```
 - **Resource Backend 用途：** 連接靜態資源 (如 S3 Bucket)，考試極少用到。
 

@@ -1,7 +1,7 @@
 # Kubernetes CKA 學習筆記 Part18 - Kubernetes 工程規範與底層機制筆記
 
 
-**重點:** Version Skew Policy, Static Pods, Systemd
+**重點:** Version Skew Policy, Static Pods, Systemd  
 **date:** 2025-01-08
 
 ---

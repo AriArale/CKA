@@ -1,7 +1,7 @@
 # Kubernetes CKA 學習筆記 Part1 - 備考指南與學習筆記
 
 **目標：** 2026/01/30 考取 CKA (Certified Kubernetes Administrator)  
-**角色視角：** SRE / DevOps Engineer
+**角色視角：** SRE / DevOps Engineer  
 **date:** 2025-12-03
 
 ---

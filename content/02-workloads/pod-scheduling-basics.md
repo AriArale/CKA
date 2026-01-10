@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part9 - 排程、親和性與除錯技巧
 
-**重點:** Log 分析、Pod Preemption (搶佔)、Affinity 語法陷阱、TopologyKey 解析
+**重點:** Log 分析、Pod Preemption (搶佔)、Affinity 語法陷阱、TopologyKey 解析  
 **date:** 2025-12-16
 
 ---

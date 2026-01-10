@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part14 - Node Join, Certs & Static Pods
 
-**重點:** Kubeadm Join 流程、憑證更新、Static Pod 運作機制 (Mirror Pod) 與 DaemonSet 架構比較
+**重點:** Kubeadm Join 流程、憑證更新、Static Pod 運作機制 (Mirror Pod) 與 DaemonSet 架構比較  
 **date:** 2025-12-29
 
 ---
@@ -14,7 +14,7 @@
   ```bash
     kubeadm token create --print-join-command
     # 輸出範例: kubeadm join <IP>:6443 --token <token> --discovery-token-ca-cert-hash <hash>
-    ```
+```
 2.  **在 Worker Node 執行:**
     * 直接貼上上述指令 (需 sudo 權限)。
 

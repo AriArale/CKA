@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part12 - DaemonSet 實戰、除錯 SOP 與 Cluster 建置
 
-**重點:** DaemonSet Node Config、Shell 模式 (`sh -c`)、CrashLoopBackOff 排查、Kubeadm Init 與 Join 流程
+**重點:** DaemonSet Node Config、Shell 模式 (`sh -c`)、CrashLoopBackOff 排查、Kubeadm Init 與 Join 流程  
 **date:** 2025-12-22
 
 ---
@@ -72,7 +72,7 @@ Pod 啟動後馬上掛掉，不斷重試。
 
 ### 場景 B：Create Deployment 報錯 `exactly one NAME is required`
 
-原因： Shell 變數展開時包含空白鍵 (d="--dry-run= client" )。
+原因： Shell 變數展開時包含空白鍵 (d="--dry-run= client" )。  
 修正： 去除空白 (export d="--dry-run=client -o yaml")。
 
 ---

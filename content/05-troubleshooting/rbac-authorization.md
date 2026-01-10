@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part8 - RBAC 權限管理實戰
 
-**重點:** User vs SA、Role vs ClusterRole、綁定作用域 (Scope) 解析
+**重點:** User vs SA、Role vs ClusterRole、綁定作用域 (Scope) 解析  
 **date:** 2025-12-15
 
 ---

@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part16 - Kubernetes 硬核觀念補充
 
-**重點:** 網路分層模型、資料序列化原理、ConfigMap/Secret 機制、Workload 調度哲學
+**重點:** 網路分層模型、資料序列化原理、ConfigMap/Secret 機制、Workload 調度哲學  
 **date:** 2026-01-06
 
 ---
@@ -95,23 +95,23 @@
     * 現代電腦**宏觀**上是馮·紐曼架構 (RAM 內 Code/Data 混居)。
     * **微觀**上 (CPU 內部) 是哈佛架構 (L1 Cache 分離 Code/Data) 以提升效能。
 
-- 1. 宏觀視角：RAM 是個大倉庫 (Von Neumann)  
-	在您的 16GB 記憶體條 (RAM) 裡，**Data (資料)** 和 **Code (程式碼)** 是住在同一個物理空間的。
+1. 宏觀視角：RAM 是個大倉庫 (Von Neumann)  
+在您的 16GB 記憶體條 (RAM) 裡，**Data (資料)** 和 **Code (程式碼)** 是住在同一個物理空間的。
 	
 	- **Code (程式碼):** 這是應用程式的「指令本身」（例如 Chrome 瀏覽器的 `.app` 執行檔）。這通常佔比較小，幾百 MB 就算很大了。
 	- **Data (資料):** 這是程式執行時產生的「內容」（例如 Chrome 開了 100 個分頁，每個分頁裡的圖片、文字、影片緩衝）。**這才是吃掉您 RAM 的元兇**。    
 
-- 2. 微觀視角：CPU 內部的分流 (Harvard)
+2. 微觀視角：CPU 內部的分流 (Harvard)
 	那「Code 和 Data 分離」發生在哪？
 	它發生在 資料從 RAM 被搬進 CPU 核心的那一瞬間。
 	
-	    a. **在 RAM 裡：** 大家混在一起（Von Neumann）。  
-	    b. **在傳輸匯流排 (Bus) 上：** 排隊進 CPU。  
-	    c. **進入 CPU L1 Cache：**  
-	    警衛 (CPU Fetch Unit) 看到這是「指令 (`ADD`, `JMP`)」，把它踢進 **L1i (Instruction Cache)**。  
-	    警衛看到這是「數值 (`User ID`, `Image Pixel`)」，把它踢進 **L1d (Data Cache)**。
+	a. **在 RAM 裡：** 大家混在一起（Von Neumann）。  
+	b. **在傳輸匯流排 (Bus) 上：** 排隊進 CPU。  
+	c. **進入 CPU L1 Cache：**  
+	警衛 (CPU Fetch Unit) 看到這是「指令 (`ADD`, `JMP`)」，把它踢進 **L1i (Instruction Cache)**。  
+	警衛看到這是「數值 (`User ID`, `Image Pixel`)」，把它踢進 **L1d (Data Cache)**。
 
-- 3. 記憶體裡的 Data 結構 (Process Memory Layout)
+3. 記憶體裡的 Data 結構 (Process Memory Layout)
 	為了更具體理解 Data 怎麼佔用 RAM，一個執行中的程式 (Process) 在 RAM 裡通常切成這四塊：
 
 | **區域**           | **內容 (Code vs Data)** | **佔用 RAM 行為**                                                       |

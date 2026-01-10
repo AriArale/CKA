@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part5 - Ingress 進階設定與除錯
 
-**重點:** Ingress Rewrite、301 Redirect 除錯、IngressClass 版本差異
+**重點:** Ingress Rewrite、301 Redirect 除錯、IngressClass 版本差異  
 **date:** 2025-12-09
 
 ---

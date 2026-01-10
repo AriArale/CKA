@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part7 - kubectl exec 參數詳解
 
-**重點:** kubectl exec 參數詳解
+**重點:** kubectl exec 參數詳解  
 **date:** 2025-12-13
 
 ---

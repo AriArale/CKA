@@ -1,6 +1,6 @@
 # Kubernetes CKA 學習筆記 Part2 - 資源管理與除錯
 
-**主題:** 宣告式管理、ConfigMap 掛載驗證、YAML 生成與排錯
+**主題:** 宣告式管理、ConfigMap 掛載驗證、YAML 生成與排錯  
 **date:** 2025-12-04
 
 ---
