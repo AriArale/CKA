@@ -8,7 +8,7 @@
 ---
 
 ## 1. 戰場生存配置 (Exam Environment Setup)
-進入考試終端機的第一分鐘，**什麼題目都不要看**，先輸入這四行建立武器庫。
+進入考試終端機相關設定：
 
 ```bash
 # 1. 設定縮寫 (考試環境通常預設有，但打一下確認心安)
@@ -26,6 +26,9 @@ echo 'set autoindent' >> ~/.vimrc
 
 # 4. 測試與暖機
 k run nginx --image=nginx $d  # 應立刻吐出 YAML
+
+# 5. helm 指令補全
+source <(helm completion bash)
 ```
 
 ## 2. 肌肉記憶指令集 (Imperative Muscle Memory)
