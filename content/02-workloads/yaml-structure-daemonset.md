@@ -77,7 +77,7 @@ DaemonSet 通常被視為「系統關鍵元件」，YAML 常見特徵：
     k create deploy my-ds --image=nginx --dry-run=client -o yaml > ds.yaml
 ```
 2.  **手術修改 (`vim ds.yaml`)：**
-    * `kind: Deployment` -> 改為 `DaemonSet`
+    * `kind: Deployment` → 改為 `DaemonSet`
     * **刪除** `replicas: 1` (最重要)
     * **刪除** `strategy: {}`
     * (選填) 刪除 `status: {}`

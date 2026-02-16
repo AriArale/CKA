@@ -69,7 +69,7 @@
 * **限制:** **Port 不能衝突**。Container A 佔用 80，Container B 就絕對不能用 80。
 
 ### 流量路徑 (NodePort)
-`Client` -> `NodePort (Node IP:30080)` -> `Service IP (ClusterIP)` -> `Pod IP` -> `TargetPort (Container 實際監聽的 Port)`
+`Client` → `NodePort (Node IP:30080)` → `Service IP (ClusterIP)` → `Pod IP` → `TargetPort (Container 實際監聽的 Port)`
 
 ---
 ## 4. 架構比較：Metrics Server vs CNI

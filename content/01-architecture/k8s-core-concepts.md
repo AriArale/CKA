@@ -21,7 +21,7 @@
 1.  **外部使用者** ➜ `NodeIP:30006` (**nodePort**)
 2.  **K8s 內部轉發** ➜ `ServiceIP:80` (**port**)
 3.  **負載平衡** ➜ `PodIP:8080` (**targetPort**) ➜ **Container**
-User -> `NodeIP:nodePort` -> (NAT) -> `ServiceIP:port` -> (LoadBalance) -> `PodIP:targetPort`
+User → `NodeIP:nodePort` → (NAT) → `ServiceIP:port` → (LoadBalance) → `PodIP:targetPort`
 ### ⚠️ CKA 考點
 *  **鐵律：`targetPort` (Service) 必須 = `containerPort` (Deployment)。**，否則連線會被拒絕 (Connection Refused)。
 * 若未指定，`targetPort` 預設等於 `port`。
@@ -98,10 +98,10 @@ flowchart TB
         ConfigMap("設定檔")
         Secret("機密檔")
   end
-    User("使用者") -- 連線流量 --> Service
-    Service -- "搜尋 Label: app=nginx" --> Pod1 & Pod2 & Pod3
-    Deployment -- 負責啟動與監控 --> Pod1 & Pod2 & Pod3
-    Pod1 -- 讀取 --> ConfigMap & Secret
+    User("使用者") -- 連線流量 -→ Service
+    Service -- "搜尋 Label: app=nginx" -→ Pod1 & Pod2 & Pod3
+    Deployment -- 負責啟動與監控 -→ Pod1 & Pod2 & Pod3
+    Pod1 -- 讀取 -→ ConfigMap & Secret
 ```
 
 ### 其他指揮官 (Workloads)
@@ -133,8 +133,8 @@ K8s 預設讓所有 Pod 互通 (Flat Network)，目的是 **去除 NAT 的複雜
 
 不要誤以為 `kubectl apply` 負責檔案管理。
 
-* **Git:** 負責 **「文件管理」** (版本控制、歷史紀錄、備份)。 -> **建築師/檔案室**
-* **kubectl apply:** 負責 **「狀態同步」** (把 YAML 變成現實)。 -> **工頭**
+* **Git:** 負責 **「文件管理」** (版本控制、歷史紀錄、備份)。 → **建築師/檔案室**
+* **kubectl apply:** 負責 **「狀態同步」** (把 YAML 變成現實)。 → **工頭**
 
 **SRE 實務流程：**
 1.  在 **Git** 中修改 YAML (版控)。

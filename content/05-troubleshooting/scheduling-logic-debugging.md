@@ -34,7 +34,7 @@
 * **根源分析:** Kubelet 啟動參數由 Systemd 組合而成。
     * `/var/lib/kubelet/kubeadm-flags.env` (Kubeadm 自動生成)
     * `/etc/systemd/system/kubelet.service.d/10-kubeadm.conf` (外掛設定)
-* **修復 SOP:** 找到並刪除錯誤 Flag $\rightarrow$ `systemctl daemon-reload` $\rightarrow$ `systemctl restart kubelet`。
+* **修復 SOP:** 找到並刪除錯誤 Flag → `systemctl daemon-reload` → `systemctl restart kubelet`。
 
 ---
 
@@ -70,7 +70,7 @@
 
 ### B. 版本偏差策略 (Version Skew Policy)
 * **kubectl (Client):** 可比 Server 新或舊 1 個版本 (+/- 1 Minor)。
-* **kubelet (Node):** **絕對不能**比 API Server 新 (只能舊)。升級順序：Control Plane $\rightarrow$ Nodes。
+* **kubelet (Node):** **絕對不能**比 API Server 新 (只能舊)。升級順序：Control Plane → Nodes。
 
 ### C. Kubeadm Token
 * **`token generate`:** 離線產生亂數格式字串（無效，需再註冊）。

@@ -137,7 +137,7 @@ source <(helm completion bash)
         
     - **Node/Kubelet:** `journalctl -u kubelet | tail -n 20`。
         
-    - **API Server:** `crictl ps | grep apiserver` -> `crictl logs <id>`。
+    - **API Server:** `crictl ps | grep apiserver` → `crictl logs <id>`。
         
 
 ### B. 網路連線測試 (Connectivity)

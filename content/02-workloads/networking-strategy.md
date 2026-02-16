@@ -48,17 +48,17 @@
 ## 3. Ingress 流量與除錯 (Ingress Architecture)
 
 ### 流量路徑 (Traffic Flow)
-User $\rightarrow$ **NodePort (e.g., 30080)** $\rightarrow$ **Ingress Controller Service** $\rightarrow$ **Ingress Controller Pod (Nginx)** $\rightarrow$ **Backend Service** $\rightarrow$ **Backend Pod**
+User → **NodePort (e.g., 30080)** → **Ingress Controller Service** → **Ingress Controller Pod (Nginx)** → **Backend Service** → **Backend Pod**
 
 ### 實務架構 (Port 80 vs 30080)
 * **Lab/CKA 環境:** 使用 **NodePort (30080)** 作為入口，因為沒有外部負載平衡器。
-* **Cloud 環境:** AWS ELB (Port 80) $\rightarrow$ NodePort (30080)。User 看到的是 Port 80。
-* **On-Prem 環境:** MetalLB (BGP/ARP) 或 HW LB (F5) $\rightarrow$ NodePort。
+* **Cloud 環境:** AWS ELB (Port 80) → NodePort (30080)。User 看到的是 Port 80。
+* **On-Prem 環境:** MetalLB (BGP/ARP) 或 HW LB (F5) → NodePort。
 
 ### 關鍵除錯指令
 在寫 Ingress YAML 前，必須先探勘環境參數：
-1.  **找大門 (Port):** `k get svc -n ingress-nginx` $\rightarrow$ 確認 NodePort 是多少 (如 30080)。
-2.  **找管理員 (Class):** `k get ingressclass` $\rightarrow$ 確認 `ingressClassName` (如 nginx)。
+1.  **找大門 (Port):** `k get svc -n ingress-nginx` → 確認 NodePort 是多少 (如 30080)。
+2.  **找管理員 (Class):** `k get ingressclass` → 確認 `ingressClassName` (如 nginx)。
 
 ---
 

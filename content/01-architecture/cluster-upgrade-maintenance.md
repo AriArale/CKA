@@ -21,7 +21,7 @@
 ## 2. 升級戰略 I：Control Plane (大腦)
 
 升級順序：**先大腦 (Control Plane)，後四肢 (Worker Node)。**
-工具順序：**先 Kubeadm -> 再 Cluster -> 最後 Kubelet/Kubectl。**
+工具順序：**先 Kubeadm → 再 Cluster → 最後 Kubelet/Kubectl。**
 
 ### 標準 SOP
 1.  **升級工具本身 (kubeadm):**

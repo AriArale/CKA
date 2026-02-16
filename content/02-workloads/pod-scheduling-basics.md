@@ -90,7 +90,7 @@ k get events -A --sort-by='{.metadata.creationTimestamp}'
 ## 5. 安全性概念：Node Isolation
 
 - **風險：** Kubelet 預設可以修改自己 Node 的 Label。
-- **攻擊劇本：** 駭客攻破普通 Node -> 修改 Label 偽裝成「機密 Node」(`role=secure`) -> 騙取敏感 Pod 被調度過來 -> 竊取資料。
+- **攻擊劇本：** 駭客攻破普通 Node → 修改 Label 偽裝成「機密 Node」(`role=secure`) → 騙取敏感 Pod 被調度過來 → 竊取資料。
 - **防禦：** 使用 **NodeRestriction** Admission Plugin，禁止 Kubelet 修改敏感 Label。
 
 ---

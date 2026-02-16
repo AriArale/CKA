@@ -10,7 +10,7 @@
 ### 預留 vs 使用 (Allocation vs. Usage)
 * **Kubernetes 調度依據:** Scheduler 進行節點分配時，只看 **Requests (預留量)**，不看當下的實際 Usage (使用量)。
 * **無 Metrics Server 時的檢查法:**
-    * 指令: `kubectl describe node <node-name>` -> 查看 **Allocated resources** 區塊。
+    * 指令: `kubectl describe node <node-name>` → 查看 **Allocated resources** 區塊。
     * **意義:** 即便 Node CPU 使用率為 0%，如果所有 Pod 的 Requests 總和已達上限，Scheduler 仍會判定該節點額滿，導致新 Pod 處於 Pending 狀態。
 
 ### Metrics Server

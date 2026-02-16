@@ -38,7 +38,7 @@ k -n world expose deploy asia --port 80
 |**Service Port (`port`)**|**介面 (Interface)**|**虛擬的**。K8s 內部的統一入口。外部程式呼叫此服務時，只需知道這個 Port (例如 80)，不用管後端改什麼。|
 |**Target Port (`targetPort`)**|**實作 (Implementation)**|**真實的**。Container 內部程式實際監聽的 Port (例如 8080)。|
 
-- **優勢：** 當容器內部的應用程式修改 Port (80 -> 8080) 時，只需修改 Service 的 mapping，不用通知所有呼叫端修改程式碼。
+- **優勢：** 當容器內部的應用程式修改 Port (80 → 8080) 時，只需修改 Service 的 mapping，不用通知所有呼叫端修改程式碼。
 
 ---
 
